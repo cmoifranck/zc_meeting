@@ -60,8 +60,10 @@ public class CalendarServletSample extends HttpServlet {
 		final ClientSession clientSession = ClientSession.get();
 
 		if (null != clientSession && clientSession.getSubject().getPrincipals().size() > 0) {
+			// Todo remove sysOut
 			System.out.println("Principals of current user : " + clientSession.getSubject().getPrincipals());
 		} else {
+			// Todo remove sysOut
 			System.out.println("No principal for current user");
 			return; // not possible to get calendar/token with anonymous
 		}
@@ -72,10 +74,13 @@ public class CalendarServletSample extends HttpServlet {
 		final List<CalendarListEntry> calendarsItems = calendars.getItems();
 
 		if (calendarsItems.size() == 0) {
+			// Todo remove sysOut
 			System.out.println("No calendars found.");
 		} else {
+			// Todo remove sysOut
 			System.out.println("Calendriers : ");
 			for (final CalendarListEntry calendar : calendarsItems) {
+				// Todo remove sysOut
 				System.out.println(calendar.getSummary() + " : " + calendar.getId() + "(" + calendar.isPrimary() + ")");
 			}
 		}
@@ -86,14 +91,17 @@ public class CalendarServletSample extends HttpServlet {
 				.setSingleEvents(true).execute();
 		final List<Event> items = events.getItems();
 		if (items.size() == 0) {
+			// Todo remove sysOut
 			System.out.println("No upcoming events found.");
 		} else {
+			// Todo remove sysOut
 			System.out.println("Upcoming events");
 			for (final Event event : items) {
 				DateTime start = event.getStart().getDateTime();
 				if (start == null) {
 					start = event.getStart().getDate();
 				}
+				// Todo remove sysOut
 				System.out.printf("%s (%s)\n", event.getSummary(), start);
 			}
 		}
